@@ -32,7 +32,6 @@ $pp->requestHeaderArr['payerstatus'] = "verified";
 $ppResponse = $pp->PPHttpPost(); // make the connection to paypal and get a response
 
 if(isset($ppResponse['L_ERRORCODE0']))
-
     echo "Error: {$ppResponse['L_LONGMESSAGE0']}";
 
 ?>
