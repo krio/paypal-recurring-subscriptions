@@ -5,9 +5,9 @@ include("includes/paypalrecurring.php");
 $pp = new PayPalRecurringPayments();
 
 $pp->test = true; // connect to the test sandbox or live server
-$pp->requestHeaderArr['user'] = "";
-$pp->requestHeaderArr['pwd'] = "";
-$pp->requestHeaderArr['signature'] = "";
+$pp->requestHeaderArr['user'] = "kevinr_1246254684_biz_api1.gmail.com";
+$pp->requestHeaderArr['pwd'] = "1246254691";
+$pp->requestHeaderArr['signature'] = "AFcWxV21C7fd0v3bYYYRCpSSRl31AI57VGs7wtKAIIlqiF-XIrCOKrxR";
 $pp->requestHeaderArr['countrycode'] = "US";
 $pp->requestHeaderArr['billingperiod'] = "Month"; // bill per month
 $pp->requestHeaderArr['billingfrequency'] = 1; // bill once every month
@@ -31,7 +31,13 @@ $pp->requestHeaderArr['payerstatus'] = "verified";
 
 $ppResponse = $pp->PPHttpPost(); // make the connection to paypal and get a response
 
+$viewResponse = Array();
+
 if(isset($ppResponse['L_ERRORCODE0']))
-    echo "Error: {$ppResponse['L_LONGMESSAGE0']}";
+    $viewResponse['error'] = "Error: {$ppResponse['L_LONGMESSAGE0']}";
+else if(isset($ppResponse['ACK']) && $ppResponse['ACK'] == ('Success' || 'SuccessWithWarning'))
+    $viewResponse['success'] = "Your subscription has been processed.";
+    
+echo json_encode($viewResponse);
 
 ?>
