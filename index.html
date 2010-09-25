@@ -3,92 +3,182 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>PayPal Recurring &amp; Direct Payment Script</title>    
+    <title>PayPal Recurring &amp; Direct Payment Script</title>
+    <link href="css/styles.css" rel="stylesheet" type="text/css" /> 
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.js"></script>    
 </head>
 
 <body>
 
-    <div>
-      <form name="form1" method="post" action="deluxeproc.php">
-        <h1>Recurring &amp; Direct PayPal Payment Form</h1>
+<div id="wrapper">
     
-        <label>First Name</label>
-        <input type="text" name="f_nm"/>
+      <h1>Recurring &amp; Direct PayPal Payment Form</h1>
         
-        <label>Last Name</label>
-        <input type="text" name="l_nm"/>
+      <form id="form" name="form" method="post" action="deluxeproc.php">
+                
+        <div class="field">
+            <label>First Name</label>
+            <input id="f_nm" type="text" name="f_nm"/>
+        </div>
         
-        <label>Email</label>
-        <input type="text" name="email"/>
+        <div class="field">
+            <label>Last Name</label>
+            <input id="l_nm" type="text" name="l_nm"/>
+        </div>
         
-        <label>Payment Period</label>
-        <select name="period">
-            <option value="3">3 Months</option>
-    		<option value="4">4 Months</option>
-    		<option value="5">5 Months</option>
-    		<option value="6">6 Months</option>
-    		<option value="7">7 Months</option>
-    		<option value="8">8 Months</option>
-    		<option value="9">9 Months</option>
-    		<option value="10">10 Months</option>
-    		<option value="11">11 Months</option>
-    		<option value="12">12 Months</option>
-    		<option value="13">13 Months</option>
-    		<option value="14">14 Months</option>
-    		<option value="15">15 Months</option>
-    		<option value="16">16 Months</option>
-    		<option value="17">17 Months</option>
-    		<option value="18">18 Months</option>
-    		<option value="19">19 Months</option>
-    		<option value="20">20 Months</option>
-    		<option value="21">21 Months</option>
-    		<option value="22">22 Months</option>
-    		<option value="23">23 Months</option>
-    		<option value="24">24 Months</option>
-  		</select>
+        <div class="field">
+            <label>Email</label>
+            <input id="email" type="text" name="email"/>
+        </div>
         
-        <label>Card Type</label>
-        <select name="cardtype">
-            <option value="Visa">Visa</option>
-    		<option value="Mastercard">Mastercard</option>
-    		<option value="Discover">Discover</option>
-    		<option value="Amex">Amex</option>
-    	</select>
-    											
-    											
-  	    <label>Card Number</label>
-        <input type="text" name="cardnumber"/>
+        <div class="field">
+            <label>Payment Period</label>
+            <select id="period" name="period">
+                <option value="3">3 Months</option>
+        		<option value="4">4 Months</option>
+        		<option value="5">5 Months</option>
+        		<option value="6">6 Months</option>
+        		<option value="7">7 Months</option>
+        		<option value="8">8 Months</option>
+        		<option value="9">9 Months</option>
+        		<option value="10">10 Months</option>
+        		<option value="11">11 Months</option>
+        		<option value="12">12 Months</option>
+        		<option value="13">13 Months</option>
+        		<option value="14">14 Months</option>
+        		<option value="15">15 Months</option>
+        		<option value="16">16 Months</option>
+        		<option value="17">17 Months</option>
+        		<option value="18">18 Months</option>
+        		<option value="19">19 Months</option>
+        		<option value="20">20 Months</option>
+        		<option value="21">21 Months</option>
+        		<option value="22">22 Months</option>
+        		<option value="23">23 Months</option>
+        		<option value="24">24 Months</option>
+      		</select>
+        </div>
         
-        <label>Expiration Date</label>
-        <select name="cardexpm">
-    	   <option value="1">1</option>
-    	   <option value="2">2</option>
-    	   <option value="3">3</option>
-    	   <option value="4">4</option>
-    	   <option value="5">5</option>
-    	   <option value="6">6</option>
-    	   <option value="7">7</option>
-    	   <option value="8">8</option>
-    	   <option value="9">9</option>
-    	   <option value="10">10</option>
-    	   <option value="11">11</option>
-    	   <option value="12">12</option>
-    	</select>
+        <div class="field">
+            <label>Card Type</label>
+            <select id="cardtype" name="cardtype">
+                <option value="Visa">Visa</option>
+        		<option value="Mastercard">Mastercard</option>
+        		<option value="Discover">Discover</option>
+        		<option value="Amex">Amex</option>
+        	</select>
+    	</div>										
+    		
+        <div class="field">    									
+      	    <label>Card Number</label>
+            <input id="cardnumber" type="text" name="cardnumber"/>
+        </div>
         
-       <select name="cardexpy"> 
-    	   <option value="2010">2010</option>
-    	   <option value="2011">2011</option>
-    	   <option value="2012">2012</option>
-    	   <option value="2013">2013</option>
-    	   <option value="2014">2014</option>
-    	   <option value="2015">2015</option>
-    	   <option value="2016">2016</option>
-       </select>
+        <div class="field">
+            <label>Expiration Date</label>
+            <select id="cardexpm" name="cardexpm">
+        	   <option value="1">1</option>
+        	   <option value="2">2</option>
+        	   <option value="3">3</option>
+        	   <option value="4">4</option>
+        	   <option value="5">5</option>
+        	   <option value="6">6</option>
+        	   <option value="7">7</option>
+        	   <option value="8">8</option>
+        	   <option value="9">9</option>
+        	   <option value="10">10</option>
+        	   <option value="11">11</option>
+        	   <option value="12">12</option>
+        	</select>           
+        
+           <select id="cardexpy" name="cardexpy"> 
+        	   <option value="2010">2010</option>
+        	   <option value="2011">2011</option>
+        	   <option value="2012">2012</option>
+        	   <option value="2013">2013</option>
+        	   <option value="2014">2014</option>
+        	   <option value="2015">2015</option>
+        	   <option value="2016">2016</option>
+           </select>
+       </div> 
        
-       <button  type="submit">Submit</button>
+       <button type="submit">Submit</button>
     
       </form>
-    </div>
+      
+      <ul id="errors"></ul>
+    
+</div>
+    
+    <script type="text/javascript">
+	   $("#form").submit(function() {
+	      
+          $("#errors").fadeOut().empty();
+          
+          var f_nm = $("#f_nm").val();
+          var l_nm = $("#l_nm").val();
+          var email = $("#email").val();
+          var period = $("#period").val();
+          var cardtype = $("#cardtype").val();
+          var cardnumber = $("#cardnumber").val();
+          var cardexpm = $("#cardexpm").val();
+          var cardexpy = $("#cardexpy").val();
+          
+          var errors = 0;
+          
+          if(f_nm == '')
+          {
+            $("#f_nm").parent().addClass("error");
+            errors += 1;
+          }            
+            
+          if(l_nm == '')
+          {
+            $("#l_nm").parent().addClass("error");
+            errors += 1;
+          }
+            
+          if(email == '')
+          {
+            $("#email").parent().addClass("error");
+            errors += 1;
+          }
+          
+          if(cardnumber == '')
+          {
+            $("#cardnumber").parent().addClass("error");
+            errors += 1;
+          }
+          
+          if(errors > 0)
+            return false;
+          else
+          {
+            $.ajax({
+               type: "POST",
+               dataType: "json",
+               url: "deluxeproc.php",
+               data : "f_nm=" + f_nm + "&l_nm=" + l_nm + "&email=" + email + "&period=" + period +
+                      "&cardtype=" + cardtype + "&cardnumber=" + cardnumber + "&cardexpm=" + cardexpm + 
+                      "&cardexpy=" + cardexpy + "", 
+               success: function(responseJSON) {
+                    //console.log(responseJSON);
+                    $.each(responseJSON, function() {
+                        $("#errors").append("<li>" + this + "</li>");       
+                    });
+                    
+                    $("#errors").fadeIn();
+               }                
+            });
+            
+            return false;
+          }
+	   });
+       
+       $("input").change(function() {
+            $(this).parent().removeClass("error");
+       });
+    </script>
 
 </body>
 </html>
