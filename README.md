@@ -3,6 +3,8 @@ PayPal Recurring Payments
 
 Use this library to easily accept recurring PayPal payments directly from your websites. 
 
+Test it in my sandbox: http://krio.me/scripttest/subs
+
 PayPal Requirements
 -------
 
