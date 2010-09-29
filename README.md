@@ -27,5 +27,4 @@ Important
 ------------
 
 * Even when working in the PayPal sandbox they require that you enter valid card information to test.
-* Keep this in mind when testing your form. 
 * Make sure that the recurring payments module is added to your PayPal Pro account. You need to manually add it. 
