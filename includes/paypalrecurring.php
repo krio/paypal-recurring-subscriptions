@@ -4,7 +4,7 @@ class PayPalRecurringPayments
 {    
     public $liveppserver = "https://api-3t.paypal.com/nvp"; # https://api.paypal.com/nvp
     public $testppserver = "https://api-3t.sandbox.paypal.com/nvp"; # https://api.sandbox.paypal.com/nvp
-    public $test;
+    public $test = false;
     public $requestHeaderArr;
     public $methodName = "CreateRecurringPaymentsProfile";    
 

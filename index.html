@@ -14,7 +14,7 @@
     
       <h1>Recurring &amp; Direct PayPal Payment Form</h1>
         
-      <form id="form" name="form" method="post" action="deluxeproc.php">
+      <form id="form" name="form" method="post" action="">
                 
         <div class="field">
             <label>First Name</label>
@@ -46,16 +46,6 @@
         		<option value="12">12 Months</option>
         		<option value="13">13 Months</option>
         		<option value="14">14 Months</option>
-        		<option value="15">15 Months</option>
-        		<option value="16">16 Months</option>
-        		<option value="17">17 Months</option>
-        		<option value="18">18 Months</option>
-        		<option value="19">19 Months</option>
-        		<option value="20">20 Months</option>
-        		<option value="21">21 Months</option>
-        		<option value="22">22 Months</option>
-        		<option value="23">23 Months</option>
-        		<option value="24">24 Months</option>
       		</select>
         </div>
         
@@ -91,14 +81,10 @@
         	   <option value="12">12</option>
         	</select>           
         
-           <select id="cardexpy" name="cardexpy"> 
-        	   <option value="2010">2010</option>
+           <select id="cardexpy" name="cardexpy">
         	   <option value="2011">2011</option>
         	   <option value="2012">2012</option>
         	   <option value="2013">2013</option>
-        	   <option value="2014">2014</option>
-        	   <option value="2015">2015</option>
-        	   <option value="2016">2016</option>
            </select>
        </div> 
        
@@ -111,73 +97,56 @@
 </div>
     
     <script type="text/javascript">
-	   $("#form").submit(function() {
+		$("#form").submit(function() {
 	      
-          $("#errors").fadeOut().empty();
+	    	$("#errors").fadeOut().empty();
           
-          var f_nm = $("#f_nm").val();
-          var l_nm = $("#l_nm").val();
-          var email = $("#email").val();
-          var period = $("#period").val();
-          var cardtype = $("#cardtype").val();
-          var cardnumber = $("#cardnumber").val();
-          var cardexpm = $("#cardexpm").val();
-          var cardexpy = $("#cardexpy").val();
+	        var UserPayInfo = {
+				f_nm: $("#f_nm").val(),
+		        l_nm: $("#l_nm").val(),
+		        email: $("#email").val(),
+		        period: $("#period").val(),
+		        cardtype: $("#cardtype").val(),
+		        cardnumber: $("#cardnumber").val(),
+		        cardexpm: $("#cardexpm").val(),
+		        cardexpy: $("#cardexpy").val()
+			};
           
-          var errors = 0;
+	        var errors = 0;
+
+			$.each(UserPayInfo, function(key, val) {
+				if(val == '') {
+					$("#" + key).parent().addClass("error");
+					errors++;
+				}
+			});
           
-          if(f_nm == '')
-          {
-            $("#f_nm").parent().addClass("error");
-            errors += 1;
-          }            
-            
-          if(l_nm == '')
-          {
-            $("#l_nm").parent().addClass("error");
-            errors += 1;
-          }
-            
-          if(email == '')
-          {
-            $("#email").parent().addClass("error");
-            errors += 1;
-          }
-          
-          if(cardnumber == '')
-          {
-            $("#cardnumber").parent().addClass("error");
-            errors += 1;
-          }
-          
-          if(errors > 0)
-            return false;
-          else
-          {
-            $.ajax({
-               type: "POST",
-               dataType: "json",
-               url: "deluxeproc.php",
-               data : "f_nm=" + f_nm + "&l_nm=" + l_nm + "&email=" + email + "&period=" + period +
-                      "&cardtype=" + cardtype + "&cardnumber=" + cardnumber + "&cardexpm=" + cardexpm + 
-                      "&cardexpy=" + cardexpy + "", 
-               success: function(responseJSON) {
-                    //console.log(responseJSON);
-                    $.each(responseJSON, function() {
-                        $("#errors").append("<li>" + this + "</li>");       
-                    });
+	        if(errors === 0) {
+	        	$.ajax({
+	            	type: "POST",
+	                dataType: "json",
+	                url: "deluxeproc.php",
+	                data : "f_nm=" + UserPayInfo.f_nm + "&l_nm=" + UserPayInfo.l_nm + "&email=" + UserPayInfo.email + 
+						   "&period=" + UserPayInfo.period + "&cardtype=" + UserPayInfo.cardtype + 
+	                       "&cardnumber=" + UserPayInfo.cardnumber + "&cardexpm=" + UserPayInfo.cardexpm + 
+	                       "&cardexpy=" + UserPayInfo.cardexpy + "", 
+	                success: function(responseJSON) {
+	                    //console.log(responseJSON);
+	                	$.each(responseJSON, function() {
+	                        $("#errors").append("<li>" + this + "</li>");       
+	                    });
                     
-                    $("#errors").fadeIn();
-               }                
-            });
-            
-            return false;
-          }
-	   });
+	                    $("#errors").fadeIn();
+	                }                
+	        	});
+	        }
+
+			return false;
+		});
        
-       $("input").change(function() {
-            $(this).parent().removeClass("error");
-       });
+		$("input").change(function() {
+	    	$(this).parent().removeClass("error");
+	    });
     </script>
 
 </body>
